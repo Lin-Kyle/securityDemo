@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>demo</title>
+	</head>
+	<body>
+		<div>
+			output:
+			<input id="out" />
+		</div>
+
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script>
+			$(function() {
+				var $output = $('#out');
+
+				function getQueryString(name) {
+					var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+					var r = window.location.search.substr(1).match(reg);
+					if (r != null) return unescape(r[2]);
+					return null;
+				}
+
+				var val = JSON.parse(getQueryString('data'));
+				$output.val(val.data).html(val.data);
+			});
+		</script>
+	</body>
+</html>

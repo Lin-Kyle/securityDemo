@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>demo</title>
+		<style>
+			input {
+				width: 600px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			input:
+			<input type="text" id="in" />
+			<button type="submit" id="submit">submit</button>
+		</div>
+		<br />
+		<div>
+			output:
+			<input id="out" />
+		</div>
+
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script>
+			$(function() {
+				var $input = $('#in');
+				var $output = $('#out');
+				var $submit = $('#submit');
+
+				function escapeHtml(text) {
+					return text.replace(/[<>"&]/g, function(match, pos, originalText) {
+						switch (match) {
+							case '<':
+								return '&lt;';
+							case '>':
+								return '&gt;';
+							case '&':
+								return '&amp;';
+							case '"':
+								return '&quot;';
+						}
+					});
+				}
+
+				function unescapeHtml(str) {
+					return text.replace(/[<>"&]/g, function(match, pos, originalText) {
+						switch (match) {
+							case '&lt;':
+								return '<';
+							case '&gt;':
+								return '>';
+							case '&amp;':
+								return '&';
+							case '&quot;':
+								return '"';
+						}
+					});
+				}
+
+				$submit.click(function() {
+					var val = escapeHtml($input.val());
+					$output.val(val).html(val);
+				});
+			});
+		</script>
+	</body>
+</html>
